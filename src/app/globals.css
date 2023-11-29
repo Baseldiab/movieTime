@@ -2,26 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Lato:ital,wght@0,400;1,300;1,400&family=Orelega+One&family=Playball&family=Roboto:ital,wght@0,700;1,700;1,900&display=swap");
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.myContainer {
+  @apply md:px-10 px-4 mx-auto;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.active {
+  @apply font-bold border-b-2 border-primary;
+}
+.nav__link {
+  @apply hover:border-b border-primary py-1 sm:my-0 my-2 sm:text-xl text-sm font-medium text-primary uppercase;
 }
