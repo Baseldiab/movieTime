@@ -5,6 +5,7 @@ import React from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { Collapse, Typography, IconButton } from "@material-tailwind/react";
+import SearchForm from "./SearchForm";
 
 export default function MainNavbar() {
   const pathname = usePathname();
@@ -43,6 +44,8 @@ export default function MainNavbar() {
       <div className="myContainer sticky top-0 z-10 rounded-none border-0 px-4  lg:px-8  bg-transparent">
         <div className="flex items-center justify-between">
           <Logo />
+          <SearchForm />
+
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden sm:block">{navList}</div>
 
