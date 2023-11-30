@@ -19,9 +19,9 @@ export default function SearchForm() {
 
   return (
     <form
-      className={`p-0 relative w-3/5 flex items-center  transition-border-radius duration-500 ease-in
-         bg-secBg focus:bg-white shadow-xl focus-within:bg-white rounded-full group   
-         ${search ? "bg-white" : "bg-secBg"} `}
+      className={`nav__form md:my-0 my-3 p-0 relative w-full flex items-center  transition-border-radius duration-500 ease-in
+         bg-[#ffffff14] focus:bg-gray-200 shadow-xl focus-within:bg-gray-200 rounded-full group   
+         ${search ? "bg-gray-200" : "bg-[#ffffff14]"} `}
       onSubmit={handleSubmit}
     >
       <div
@@ -29,7 +29,7 @@ export default function SearchForm() {
       basis-11/12 px-2 "
       >
         <input
-          className="input text-base bg-transparent w-full h-full p-2 border-none focus:outline-none text-black placeholder:text-gray-600 "
+          className="nav__input input md:text-base text-sm  bg-transparent w-full h-full p-2 border-none focus:outline-none text-black placeholder:text-gray-500 placeholder:font-semibold group-focus-within:placeholder:text-gray-600 "
           placeholder="Search for movie,tv shows, person....."
           type="text"
           value={search}
@@ -37,7 +37,7 @@ export default function SearchForm() {
         />
         {search && (
           <button
-            className={`reset border-none bg-none text-black ${
+            className={`nav__reset border-none bg-none text-black ${
               search ? "inline" : "hidden"
             } `}
             onClick={handleReset}
@@ -47,8 +47,8 @@ export default function SearchForm() {
         )}
       </div>
       <button
-        className={`p-2 px-5
-       bg-secondary rounded-full h-full w-full basis-1/12 flex items-center justify-center disabled:text-gray-600 text-black `}
+        className={`nav__search p-2 md:px-5 px-3 md:text-xl text-sm
+       bg-primary hover:bg-blue-700 rounded-full h-full w-full basis-1/12 flex items-center justify-center disabled:text-gray-200 text-white `}
         disabled={search === ""}
       >
         <span>Search</span>

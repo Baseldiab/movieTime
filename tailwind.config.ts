@@ -10,13 +10,15 @@ module.exports = withMT({
   theme: {
     extend: {
       colors: {
-        mainBg: "#00002B",
+        mainBg: "#02020f",
         secBg: "#000E2B",
-        primary: "#A2FF00",
-        secondary: "#37FF00",
+        primary: "#3586ff",
+        secondary: "#36B9EA",
         searchBtn: "#8b8ba7",
       },
-      fontFamily: {},
+      screens: {
+        md: "800px",
+      },
     },
   },
   plugins: [],

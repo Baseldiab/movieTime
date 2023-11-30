@@ -7,9 +7,9 @@
 .myContainer {
   @apply md:px-10 px-4 mx-auto;
 }
-.active {
-  @apply font-bold border-b-2 border-primary;
-}
 .nav__link {
-  @apply hover:border-b border-primary py-1 sm:my-0 my-2 sm:text-xl text-sm font-medium text-primary uppercase;
+  @apply hover:text-primary hover:border-b hover:border-primary py-1 sm:my-0 my-2 sm:text-xl md:text-xl text-sm font-medium text-white uppercase;
+}
+.active {
+  @apply font-bold border-b-2 text-primary border-primary;
 }
