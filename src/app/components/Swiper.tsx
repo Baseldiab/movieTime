@@ -24,7 +24,11 @@ type Data = {
   vote_count: number;
 };
 
-export default function SwiperComponent({ data }: { data: Data[] }) {
+export default function SwiperComponent({
+  data,
+}: {
+  data: Data[] | undefined;
+}) {
   return (
     <>
       <Swiper
@@ -40,7 +44,7 @@ export default function SwiperComponent({ data }: { data: Data[] }) {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
-        {data.map((item) => {
+        {data?.map((item) => {
           return (
             <SwiperSlide key={item.id} className="text-white group">
               <Image

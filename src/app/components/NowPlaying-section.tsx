@@ -23,7 +23,7 @@ type MovieResult = {
 export default async function NowPlayingSec() {
   const moviesData: Promise<NowPlaying> = getTopRated("1");
   const data = await moviesData;
-  const dataResults: MovieResult[] = data.results;
+  const dataResults: MovieResult[] | undefined = data.results;
 
   return (
     <>
