@@ -1,6 +1,5 @@
 // Import Swiper React components
 
-import { type } from "os";
 import getTopRated from "../../../lib/getTopRated";
 import SwiperComponent from "./Swiper";
 
@@ -24,11 +23,8 @@ export default async function NowPlayingSec() {
   const moviesData: Promise<NowPlaying> = getTopRated("1");
   const data = await moviesData;
   const dataResults: MovieResult[] | undefined = data.results;
-
   return (
     <>
-      <h1 className="text-white text-center text-3xl"></h1>
-
       <SwiperComponent data={dataResults} />
     </>
   );
