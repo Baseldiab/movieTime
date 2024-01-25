@@ -9,14 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-free": "^6.5.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.0",
     "@fortawesome/free-solid-svg-icons": "^6.5.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@material-tailwind/react": "^2.1.4",
+    "@mui/material": "^5.15.6",
+    "i18next": "^23.7.19",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-i18next": "^14.0.1",
     "swiper": "^11.0.5"
   },
   "devDependencies": {
