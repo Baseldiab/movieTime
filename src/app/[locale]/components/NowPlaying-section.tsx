@@ -1,6 +1,6 @@
 // Import Swiper React components
 
-import getTopRated from "../../../lib/getTopRated";
+import getTopRated from "../../../../lib/getTopRated";
 import SwiperComponent from "./Swiper";
 
 type MovieResult = {
