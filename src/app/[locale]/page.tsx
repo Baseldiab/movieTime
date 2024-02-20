@@ -1,9 +1,19 @@
-import NowPlaying from "./components/NowPlaying-section";
+import NowPlaying from "./components/home/home.NowPlaying-section";
 import { Suspense } from "react";
 import Image from "next/image";
 import loadImg from "../../../public/images/loading.gif";
+import { TLocale } from "./components/interfaces/global.interfaces";
+import { useTranslations } from "next-intl";
 
-export default function Home() {
+interface Props {
+  params: {
+    locale: TLocale;
+  };
+}
+
+export default function Home({ params: { locale } }: Props) {
+  const t = useTranslations(locale);
+
   return (
     <main className="">
       <Suspense
@@ -18,6 +28,7 @@ export default function Home() {
       >
         <NowPlaying />
       </Suspense>
+      <h1 className="text-white">{t("search")}</h1>
     </main>
   );
 }

@@ -12,27 +12,18 @@ export default function MainNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth > 640 && setOpenNav(false)
-    );
+    window.addEventListener("resize", () => window.innerWidth > 640 && setOpenNav(false));
   }, []);
 
   const navList = (
-    <ul className="nav__list my-2 flex flex-col gap-2 sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
+    <ul className="nav__list my-2 flex flex-col  sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
       <Typography as="li" variant="small">
-        <Link
-          className={`nav__link ${pathname === "/" ? "active" : ""}`}
-          href="/"
-        >
+        <Link className={`nav__link ${pathname === "/" ? "active" : ""}`} href="/">
           home
         </Link>
       </Typography>
       <Typography as="li" variant="small">
-        <Link
-          className={`nav__link ${pathname === "/about" ? "active" : ""}`}
-          href="/about"
-        >
+        <Link className={`nav__link ${pathname === "/about" ? "active" : ""}`} href="/about">
           about
         </Link>
       </Typography>
@@ -64,11 +55,7 @@ export default function MainNavbar() {
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
                 <svg
@@ -78,19 +65,12 @@ export default function MainNavbar() {
                   stroke="currentColor"
                   strokeWidth={2}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </IconButton>
           </div>
-          <Collapse
-            className="nav__smScreen col-span-4  sm:hidden"
-            open={openNav}
-          >
+          <Collapse className="nav__smScreen col-span-4  sm:hidden" open={openNav}>
             {navList}
           </Collapse>
         </div>

@@ -21,19 +21,15 @@ type Data = {
   vote_count: number;
 };
 
-export default function SwiperComponent({
-  data,
-}: {
-  data: Data[] | undefined;
-}) {
+export default function SwiperComponent({ data }: { data: Data[] | undefined }) {
   return (
     <Swiper
       slidesPerView={6}
       spaceBetween={10}
-      // autoplay={{
-      //   delay: 2500,
-      //   disableOnInteraction: false,
-      // }}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       modules={[Autoplay]}
       className="mySwiper"
     >
@@ -50,9 +46,7 @@ export default function SwiperComponent({
                 loading="lazy"
               />
               <div className="slide__text absolute bottom-5 -translate-x-2/4 left-1/2 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-                <div className="bg-yellow-400 p-2 text-gray-900 rounded-full">
-                  exciting
-                </div>
+                <div className="bg-yellow-400 p-2 text-gray-900 rounded-full">exciting</div>
               </div>
             </div>
             <div className="swiper-lazy-preloader swiper-lazy-preloader-primary w-full h-56"></div>

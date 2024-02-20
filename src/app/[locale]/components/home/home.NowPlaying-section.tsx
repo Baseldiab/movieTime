@@ -1,7 +1,7 @@
 // Import Swiper React components
 
-import getTopRated from "../../../../lib/getTopRated";
-import SwiperComponent from "./Swiper";
+import getTopRated from "../../../../../lib/getTopRated";
+import SwiperComponent from "../swiper/home.Swiper";
 
 type MovieResult = {
   adult: boolean;
