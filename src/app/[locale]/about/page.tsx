@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import TypingAnimation from "../components/typing";
+import TypingAnimation from "../components/others/typing";
 
 export const metadata: Metadata = {
   title: "About movieTime",
