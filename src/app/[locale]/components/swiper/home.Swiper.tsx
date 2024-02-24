@@ -23,12 +23,12 @@ type Data = {
 };
 
 export default function SwiperComponent({ data }: { data: Data[] | undefined }) {
-  console.log(data);
+  // console.log(data);
   return (
-    <header className="my-6">
+    <header className="">
       <Swiper
-        slidesPerView={6}
-        spaceBetween={10}
+        slidesPerView={4.5}
+        spaceBetween={15}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -43,14 +43,21 @@ export default function SwiperComponent({ data }: { data: Data[] | undefined }) 
                 {item ? (
                   <>
                     <div className="slide__content group relative rounded-xl">
-                      <Image
-                        width={200}
-                        height={400}
-                        className="max-w-full h-auto w-56 "
-                        src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                        alt={`${item.original_title} poster`}
-                        loading="lazy"
-                      />
+                      {item.poster_path ? (
+                        <Image
+                          width={350}
+                          height={500}
+                          className=" !min-w-[200px] !w-[350px] !h-auto rounded-xl"
+                          src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                          alt={`${item.original_title} poster`}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <>
+                          <p>{`${item.original_title} poster`}</p>{" "}
+                          <Skeleton variant="rectangular" width={200} height={400} />
+                        </>
+                      )}
                       <div className="slide__text absolute bottom-5 -translate-x-2/4 left-1/2 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
                         <div className="bg-yellow-400 p-2 text-gray-900 rounded-full">exciting</div>
                       </div>

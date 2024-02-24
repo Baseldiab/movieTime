@@ -4,10 +4,11 @@ import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
-import { Collapse, Typography, IconButton } from "@material-tailwind/react";
 import SearchForm from "./SearchForm";
+import { IconButton, Typography } from "@mui/material";
+import { LocalProps } from "../interfaces/local.props.interface";
 
-export default function MainNavbar() {
+export default function MainNavbar({ params: { locale } }: LocalProps) {
   const pathname = usePathname();
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -16,22 +17,25 @@ export default function MainNavbar() {
   }, []);
 
   const navList = (
-    <ul className="nav__list my-2 flex flex-col  sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
-      <Typography as="li" variant="small">
-        <Link className={`nav__link ${pathname === "/" ? "active" : ""}`} href="/">
+    <ul className="nav__list py-2 flex flex-col  sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
+      <li>
+        <Link className={`nav__link ${pathname === `/${locale}` ? "active" : ""}`} href="/">
           home
         </Link>
-      </Typography>
-      <Typography as="li" variant="small">
-        <Link className={`nav__link ${pathname === "/about" ? "active" : ""}`} href="/about">
+      </li>
+      <li>
+        <Link
+          className={`nav__link ${pathname === `/${locale}/about` ? "active" : ""}`}
+          href="/about"
+        >
           about
         </Link>
-      </Typography>
+      </li>
     </ul>
   );
 
   return (
-    <nav className="text-primary sm:py-4 md:py-6 py-2 border-b border-primary">
+    <nav className="text-primary sm:py-4 md:py-6 py-2">
       <div className="nav__container myContainer sticky top-0 z-10 rounded-none border-0 px-4  lg:px-8  bg-transparent">
         <div className="nav__content grid md:grid-cols-4 grid-cols-2 items-center justify-between">
           <Logo />
@@ -40,7 +44,7 @@ export default function MainNavbar() {
           </div>
           <div className="nav__lgScreen flex  justify-end gap-4">
             <div className="mr-4 hidden sm:block">{navList}</div>
-            <IconButton
+            {/* <IconButton
               variant="text"
               className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent sm:hidden"
               ripple={false}
@@ -68,11 +72,11 @@ export default function MainNavbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
-            </IconButton>
+            </IconButton> */}
           </div>
-          <Collapse className="nav__smScreen col-span-4  sm:hidden" open={openNav}>
+          {/* <Collapse className="nav__smScreen col-span-4  sm:hidden" open={openNav}>
             {navList}
-          </Collapse>
+          </Collapse> */}
         </div>
       </div>
     </nav>

@@ -19,8 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body className={`${inter.className} bg-mainBg `}>
-        <Navbar />
+      <body
+        className={`${inter.className} 
+      // bg-mainBg
+       `}
+      >
         {children}
       </body>
     </html>

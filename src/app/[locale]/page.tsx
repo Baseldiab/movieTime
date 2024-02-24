@@ -5,25 +5,26 @@ import loadImg from "../../../public/images/loading.gif";
 import { TLocale } from "./components/interfaces/global.interfaces";
 import { useTranslations } from "next-intl";
 import homeBg from "./images/bg-homePage.webp";
+import MainNavbar from "./components/navbar/Navbar";
+import { LocalProps } from "./components/interfaces/local.props.interface";
 
-interface Props {
-  params: {
-    locale: TLocale;
-  };
-}
-
-export default function Home({ params: { locale } }: Props) {
+export default function Home({ params: { locale } }: LocalProps) {
   const t = useTranslations();
 
   return (
-    <main
-      className="fixed h-screen w-screen"
-      style={{
-        background: `url(./images/bg-homePage.webp) fixed center / cover`,
-      }}
-    >
-      <div className="home-container relative">
-        {/* <Suspense
+    <main className="bg-mainBg  !h-[5000px]">
+      <MainNavbar
+        params={{
+          locale: locale,
+        }}
+      />
+      <div
+        className="home-background fixed top-0 bottom-0 left-0 right-0 h-screen w-screen"
+        style={{
+          background: `url(./images/bg-homePage.webp) fixed center / cover`,
+        }}
+      ></div>
+      {/* <Suspense
         fallback={
           <Image
           className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28"
@@ -34,9 +35,8 @@ export default function Home({ params: { locale } }: Props) {
         }
         >
       </Suspense> */}
-        <NowPlaying />
-        <h1 className="text-white">{t("fields.search")}</h1>
-      </div>
+      <NowPlaying />
+      {/* <h1 className="text-white">{t("fields.search")}</h1> */}
     </main>
   );
 }
