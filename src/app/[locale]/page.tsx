@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function Home({ params: { locale } }: Props) {
-  const t = useTranslations(locale);
+  const t = useTranslations();
 
   return (
     <main className="">
@@ -28,7 +28,7 @@ export default function Home({ params: { locale } }: Props) {
       >
         <NowPlaying />
       </Suspense>
-      <h1 className="text-white">{t("search")}</h1>
+      <h1 className="text-white">{t("fields.search")}</h1>
     </main>
   );
 }
