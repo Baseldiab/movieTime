@@ -3,7 +3,7 @@ import React from "react";
 import TypingAnimation from "../components/others/typing";
 
 export const metadata: Metadata = {
-  title: "About movieTime",
+  title: "movieTime | About",
   description: "MovTime for your favorite movie",
 };
 
