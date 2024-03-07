@@ -5,8 +5,35 @@ import React from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import SearchForm from "./SearchForm";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { LocalProps } from "../interfaces/local.props.interface";
+import HomeIcon from "@mui/icons-material/Home";
+import { styled, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import InfoIcon from "@mui/icons-material/Info";
+import Toolbar from "@mui/material/Toolbar";
+import CssBaseline from "@mui/material/CssBaseline";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+
+const drawerWidth = 240;
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-start",
+}));
 
 export default function MainNavbar({ params: { locale } }: LocalProps) {
   const pathname = usePathname();
@@ -15,6 +42,17 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
   React.useEffect(() => {
     window.addEventListener("resize", () => window.innerWidth > 640 && setOpenNav(false));
   }, []);
+
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const navList = (
     <ul className="nav__list py-2 flex flex-col  sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
@@ -44,41 +82,97 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
           </div>
           <div className="nav__lgScreen flex  justify-end gap-4">
             <div className="mr-4 hidden sm:block">{navList}</div>
-            {/* <IconButton
-              variant="text"
-              className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent sm:hidden"
-              ripple={false}
-              onClick={() => setOpenNav(!openNav)}
-            >
-              {openNav ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  className="h-6 w-6"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </IconButton> */}
+            <Toolbar className="sm:hidden">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={handleDrawerOpen}
+                sx={{ ...(open && { display: "none" }) }}
+              >
+                <MenuIcon className={"text-white"} fontSize="medium" />
+              </IconButton>
+            </Toolbar>
           </div>
-          {/* <Collapse className="nav__smScreen col-span-4  sm:hidden" open={openNav}>
-            {navList}
-          </Collapse> */}
         </div>
       </div>
+
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+
+        <Drawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              backgroundColor: "#02020fe0",
+              borderInlineStart: "1px solid #ffffff78",
+              // backdropFilter: "blur(39px)",
+            },
+            "& .MuiListItemIcon-root": {
+              minWidth: "39px",
+            },
+          }}
+          variant="persistent"
+          anchor="right"
+          open={open}
+        >
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronLeftIcon sx={{ color: theme.palette.common.white }} />
+              ) : (
+                <ChevronRightIcon sx={{ color: theme.palette.common.white }} />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <Divider sx={{ borderColor: "#ffffff78" }} />
+          <List>
+            <ListItem disablePadding>
+              <ListItemButton
+                sx={{
+                  "MuiListItemIcon-root": {
+                    minWidth: "35px",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <HomeIcon
+                    className={` ${pathname === `/${locale}` ? "text-primary" : "text-white"}`}
+                  />
+                </ListItemIcon>
+                <Link className={`nav__link ${pathname === `/${locale}` ? "active" : ""}`} href="/">
+                  <ListItemText primary={"Home"} />
+                </Link>
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+              <ListItemButton
+                sx={{
+                  "MuiListItemIcon-root": {
+                    minWidth: "35px",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <InfoIcon
+                    className={` ${
+                      pathname === `/${locale}/about` ? "text-primary" : "text-white"
+                    }`}
+                  />
+                </ListItemIcon>
+                <Link
+                  className={`nav__link ${pathname === `/${locale}/about` ? "active" : ""}`}
+                  href="/about"
+                >
+                  <ListItemText primary={"About"} />
+                </Link>
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Drawer>
+      </Box>
     </nav>
   );
 }

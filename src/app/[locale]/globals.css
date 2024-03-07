@@ -8,7 +8,7 @@
   @apply md:px-10 px-4 mx-auto;
 }
 .nav__link {
-  @apply hover:text-primary hover:border-b hover:border-primary py-1 sm:my-0  sm:text-xl md:text-xl text-sm font-medium text-white uppercase;
+  @apply hover:text-primary hover:border-b hover:border-primary py-1 sm:my-0  sm:text-lg text-sm font-medium text-white uppercase;
 }
 .active {
   @apply font-bold border-b-2 text-primary border-primary;
