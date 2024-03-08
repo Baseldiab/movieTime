@@ -25,34 +25,38 @@ type Data = {
 export default function SwiperComponent({ data }: { data: Data[] | undefined }) {
   // console.log(data);
   return (
-    <header className="">
+    <header className="myContainer">
       <Swiper
-        slidesPerView={4.5}
-        spaceBetween={15}
+        slidesPerView={"auto"}
+        spaceBetween={8}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
         }}
         modules={[Autoplay]}
-        className="mySwiper"
+        className="mySwiper !justify-center md:!gap-14 !gap-5 
+        !grid xl:gird-cols-6 lg:grid-cols-4 md:grid-cols-3 mobile:grid-cols-2 grid-cols-1
+        "
       >
         {data?.map((item) => {
           return (
-            <SwiperSlide key={item.id} className="text-white ">
+            <SwiperSlide key={item.id} className="text-white">
               <>
                 {item ? (
                   <>
-                    <div className="slide__content group relative rounded-xl">
+                    <div className="slide__content group relative rounded-xl flex justify-center">
                       {item.poster_path ? (
+                        // <div className="!grid !grid-cols-5 gap-4">
                         <Image
-                          width={350}
-                          height={500}
-                          className=" !min-w-[200px] !w-[350px] !h-auto rounded-xl"
+                          width={260}
+                          height={400}
+                          className="!min-w-[220px] !max-w-[400px] !h-auto rounded-xl"
                           src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                           alt={`${item.original_title} poster`}
                           loading="lazy"
                         />
                       ) : (
+                        // </div>
                         <>
                           <p>{`${item.original_title} poster`}</p>{" "}
                           <Skeleton variant="rectangular" width={200} height={400} />

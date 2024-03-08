@@ -29,7 +29,7 @@ export default function SearchForm() {
       basis-11/12 px-2 "
       >
         <input
-          className="nav__input input md:text-base text-sm  bg-transparent w-full h-full p-2 border-none focus:outline-none text-black placeholder:text-gray-500 placeholder:font-semibold group-focus-within:placeholder:text-gray-600 "
+          className="nav__input input  bg-transparent w-full h-full p-2 border-none focus:outline-none text-black placeholder:text-gray-500 placeholder:font-semibold group-focus-within:placeholder:text-gray-600 sm:text-base text-sm "
           placeholder="Search for movie,tv shows, person....."
           type="text"
           value={search}
@@ -37,9 +37,7 @@ export default function SearchForm() {
         />
         {search && (
           <button
-            className={`nav__reset border-none bg-none text-black ${
-              search ? "inline" : "hidden"
-            } `}
+            className={`nav__reset border-none bg-none text-black ${search ? "inline" : "hidden"} `}
             onClick={handleReset}
           >
             <FontAwesomeIcon icon={faX} />
@@ -47,7 +45,7 @@ export default function SearchForm() {
         )}
       </div>
       <button
-        className={`nav__search p-2 md:px-5 px-3 md:text-xl text-sm
+        className={`nav__search p-2 md:px-3 px-2 sm:text-base text-sm 
        bg-primary hover:bg-blue-700 rounded-full h-full w-full basis-1/12 flex items-center justify-center disabled:text-gray-200 text-white `}
         disabled={search === ""}
       >

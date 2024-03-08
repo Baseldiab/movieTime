@@ -19,7 +19,10 @@ module.exports = {
         searchBtn: "#8b8ba7",
       },
       screens: {
+        // lg: "166px",
         md: "800px",
+        tab: "600px",
+        mobile: "500px",
       },
     },
   },

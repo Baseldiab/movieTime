@@ -39,9 +39,9 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
   const pathname = usePathname();
   const [openNav, setOpenNav] = React.useState(false);
 
-  React.useEffect(() => {
-    window.addEventListener("resize", () => window.innerWidth > 640 && setOpenNav(false));
-  }, []);
+  // React.useEffect(() => {
+  //   window.addEventListener("resize", () => window.innerWidth > 640 && setOpenNav(false));
+  // }, []);
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
