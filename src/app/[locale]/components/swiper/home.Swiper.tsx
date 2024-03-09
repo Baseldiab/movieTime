@@ -49,7 +49,7 @@ export default function SwiperComponent({ data }: { data: Data[] | undefined }) 
                         // <div className="!grid !grid-cols-5 gap-4">
                         <Image
                           width={260}
-                          height={400}
+                          height={350}
                           className="!min-w-[220px] !max-w-[400px] !h-auto rounded-xl"
                           src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                           alt={`${item.original_title} poster`}

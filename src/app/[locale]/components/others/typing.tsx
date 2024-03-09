@@ -1,11 +1,14 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+import MainButton from "../buttons/main-button";
 
 const TypingAnimation = () => {
+  const t = useTranslations();
+
   const [text, setText] = useState("");
-  const textToType =
-    "موقع موفي تايم الاصلي الموقع الاول الموفر لجميع المحتوي يرجي دعم الموقع ومشاركة";
+  const textToType = t("message.header");
   let index = 0;
   let isDeleting = false;
 
@@ -37,7 +40,12 @@ const TypingAnimation = () => {
     typeText();
   }, []);
 
-  return <p className="text-white text-end">{text}</p>;
+  return (
+    <article className="myContainer flex justify-start items-center gap-3 my-2">
+      <MainButton color="warning" className="bg-yellow-600" text={t("fields.news")} />
+      <p className="text-white text-start">{text}</p>
+    </article>
+  );
 };
 
 export default TypingAnimation;

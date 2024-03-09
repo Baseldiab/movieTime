@@ -1,5 +1,20 @@
 {
+  "message": {
+    "header": "MovieTime website, the first provider of all content. Please support the website and share."
+  },
+  "app": {
+    "name": "MovieTime",
+    "description": "موفي تايم MovieTime"
+  },
   "fields": {
-    "search": "Search"
+    "search": "Search",
+    "news": "Last News"
+  },
+  "pages": {
+    "home": "Home",
+    "about": "About"
+  },
+  "placeholder": {
+    "search": "Search for movie,tv shows, person..... "
   }
 }

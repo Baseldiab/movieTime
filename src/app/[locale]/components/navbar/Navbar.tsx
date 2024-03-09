@@ -23,6 +23,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 const drawerWidth = 240;
 
@@ -36,6 +38,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function MainNavbar({ params: { locale } }: LocalProps) {
+  const t = useTranslations();
+
   const pathname = usePathname();
   const [openNav, setOpenNav] = React.useState(false);
 
@@ -58,7 +62,7 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
     <ul className="nav__list py-2 flex flex-col  sm:mb-0 sm:mt-0 sm:flex-row sm:items-center gap-4 sm:gap-6">
       <li>
         <Link className={`nav__link ${pathname === `/${locale}` ? "active" : ""}`} href="/">
-          home
+          {t("pages.home")}
         </Link>
       </li>
       <li>
@@ -66,7 +70,7 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
           className={`nav__link ${pathname === `/${locale}/about` ? "active" : ""}`}
           href="/about"
         >
-          about
+          {t("pages.about")}
         </Link>
       </li>
     </ul>
@@ -78,19 +82,24 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
         <div className="nav__content grid md:grid-cols-4 grid-cols-2 items-center justify-between">
           <Logo />
           <div className="md:col-span-2 col-span-4 md:order-none order-last">
-            <SearchForm />
+            <SearchForm
+              params={{
+                locale: locale,
+              }}
+            />
           </div>
           <div className="nav__lgScreen flex  justify-end gap-4">
             <div className="mr-4 hidden sm:block">{navList}</div>
-            <Toolbar className="sm:hidden">
+            <Toolbar className="sm:!hidden">
               <IconButton
+                className="sm:!hidden"
                 color="inherit"
                 aria-label="open drawer"
                 edge="end"
                 onClick={handleDrawerOpen}
                 sx={{ ...(open && { display: "none" }) }}
               >
-                <MenuIcon className={"text-white"} fontSize="medium" />
+                <MenuIcon className={"text-white sm:!hidden"} fontSize="medium" />
               </IconButton>
             </Toolbar>
           </div>
@@ -143,7 +152,7 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
                   />
                 </ListItemIcon>
                 <Link className={`nav__link ${pathname === `/${locale}` ? "active" : ""}`} href="/">
-                  <ListItemText primary={"Home"} />
+                  <ListItemText primary={t("pages.about")} />
                 </Link>
               </ListItemButton>
             </ListItem>
@@ -166,7 +175,7 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
                   className={`nav__link ${pathname === `/${locale}/about` ? "active" : ""}`}
                   href="/about"
                 >
-                  <ListItemText primary={"About"} />
+                  <ListItemText primary={t("pages.about")} />
                 </Link>
               </ListItemButton>
             </ListItem>

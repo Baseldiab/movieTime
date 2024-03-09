@@ -3,14 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faX } from "@fortawesome/free-solid-svg-icons";
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { LocalProps } from "../interfaces/local.props.interface";
+import { useTranslations } from "next-intl";
 
-export default function SearchForm() {
+export default function SearchForm({ params: { locale } }: LocalProps) {
+  const t = useTranslations();
+
   const [search, setSearch] = useState("");
   const router = useRouter();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearch("");
+    // setSearch(e.event.target);
     router.push(`/${search}/`);
   };
   const handleReset = () => {
@@ -30,7 +34,7 @@ export default function SearchForm() {
       >
         <input
           className="nav__input input  bg-transparent w-full h-full p-2 border-none focus:outline-none text-black placeholder:text-gray-500 placeholder:font-semibold group-focus-within:placeholder:text-gray-600 sm:text-base text-sm "
-          placeholder="Search for movie,tv shows, person....."
+          placeholder={t("placeholder.search")}
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -49,7 +53,7 @@ export default function SearchForm() {
        bg-primary hover:bg-blue-700 rounded-full h-full w-full basis-1/12 flex items-center justify-center disabled:text-gray-200 text-white `}
         disabled={search === ""}
       >
-        <span>Search</span>
+        <span>{t("fields.search")}</span>
       </button>
     </form>
   );

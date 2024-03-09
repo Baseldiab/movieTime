@@ -1,5 +1,9 @@
 import React from "react";
-
-export default function page() {
-  return <h1 className="text-3xl text-center">search term page</h1>;
+type props = {
+  params: {
+    searchTerm: string;
+  };
+};
+export default function page({ params: { searchTerm } }: props) {
+  return <h1 className="text-3xl text-center text-white">search term page is {searchTerm}</h1>;
 }
