@@ -41,9 +41,9 @@ const TypingAnimation = () => {
   }, []);
 
   return (
-    <article className="myContainer flex justify-start items-center gap-3 my-2">
-      <MainButton color="warning" className="bg-yellow-600" text={t("fields.news")} />
-      <p className="text-white text-start">{text}</p>
+    <article className="myContainer flex justify-start items-center gap-3 my-4 z-10">
+      <MainButton color="warning" className="bg-yellow-500 z-10 px-3" text={t("fields.news")} />
+      <p className="text-white text-start z-10">{text}</p>
     </article>
   );
 };

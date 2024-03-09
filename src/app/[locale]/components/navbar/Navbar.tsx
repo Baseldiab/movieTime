@@ -77,8 +77,8 @@ export default function MainNavbar({ params: { locale } }: LocalProps) {
   );
 
   return (
-    <nav className="text-primary sm:py-4 md:py-6 py-2">
-      <div className="nav__container myContainer sticky top-0 z-10 rounded-none border-0 px-4  lg:px-8  bg-transparent">
+    <nav className="text-primary sm:py-4 md:py-6 py-2 sticky top-0 z-50 shadow-md">
+      <div className="nav__container myContainer  rounded-none border-0 px-4  lg:px-8  bg-transparent">
         <div className="nav__content grid md:grid-cols-4 grid-cols-2 items-center justify-between">
           <Logo />
           <div className="md:col-span-2 col-span-4 md:order-none order-last">

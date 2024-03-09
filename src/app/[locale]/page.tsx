@@ -11,6 +11,7 @@ import { LocalProps } from "./components/interfaces/local.props.interface";
 import { LocaleParams, build_meta_data } from "./layout";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import TypingAnimation from "./components/others/typing";
 
 export async function generateMetadata({
   params: { locale },
@@ -25,18 +26,12 @@ export default async function HomePage({ params: { locale } }: LocalProps) {
   const t = await getTranslations(locale);
 
   return (
-    <main className="bg-mainBg  !h-[5000px]">
+    <>
       {/* <MainNavbar
         params={{
           locale: locale,
         }}
       /> */}
-      <div
-        className="home-background fixed top-0 bottom-0 left-0 right-0 h-screen w-screen"
-        style={{
-          background: `url(./images/bg-homePage.webp) fixed center / cover`,
-        }}
-      ></div>
       {/* <Suspense
         fallback={
           <Image
@@ -50,6 +45,6 @@ export default async function HomePage({ params: { locale } }: LocalProps) {
       </Suspense> */}
       <NowPlaying />
       {/* <h1 className="text-white">{t("fields.search")}</h1> */}
-    </main>
+    </>
   );
 }

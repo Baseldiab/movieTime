@@ -2,10 +2,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar/Navbar";
 import { TLocale } from "./components/interfaces/global.interfaces";
 import { NextIntlClientProvider, useTranslations } from "next-intl";
-import { getRequestConfig, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import MainNavbar from "./components/navbar/Navbar";
 import { get_messages } from "@/i18n";
 import TypingAnimation from "./components/others/typing";
@@ -62,8 +61,16 @@ export default async function RootLayout({
               locale: locale,
             }}
           />
-          <TypingAnimation />
-          {children}
+          <main className="bg-mainBg  !h-[5000px] z-10">
+            <div
+              className="home-background fixed top-0 bottom-0 left-0 right-0 "
+              style={{
+                background: `url(/images/bg-homePage.webp) fixed center / cover`,
+              }}
+            ></div>
+            <TypingAnimation />
+            {children}
+          </main>
         </NextIntlClientProvider>
       </body>
     </html>
